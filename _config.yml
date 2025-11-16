@@ -12,7 +12,7 @@ site_theme               : "default" # Currently available options are "default"
 title                    : "Claudio Vestini"
 title_separator          : "-"
 name                     : &name "Claudio Vestini"
-description              : &description "Final-year MEng Engineering Science student at the University of Oxford, currently on exchange at Princeton University"   # Update this with a general description of your site, this is the default if not overridden by a page
+description              : &description "Distinguished Engineering Science student with research interests in optimisation, control, machine learning, and their intersection."   # Update this with a general description of your site, this is the default if not overridden by a page
 url                      : https://ClouD-161803.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -26,9 +26,9 @@ author:
   avatar           : "profile.png"
   name             : "Claudio Vestini"
   pronouns         : # example: "she/her"  
-  bio              : "Distinguished Engineering Science student with research interests in optimisation, control, machine learning, and their intersection."
+  bio              : "Final-year MEng Engineering Science student at the University of Oxford, currently on exchange at Princeton University"
   location         : "Princeton, NJ"
-  employer         : "The University of Oxford & Princeton University"
+  employer         : "Princeton University"
   uri              : # URL
   email            : "claudio.vestini@keble.ox.ac.uk" 
 
