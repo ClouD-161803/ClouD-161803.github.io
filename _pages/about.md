@@ -1,3 +1,5 @@
+Distinguished Engineering Science student with research interests in optimisation, control, machine learning, and their intersection.
+
 `
 ---
 permalink: /
