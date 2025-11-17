@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-I am an undergraduate Oxford Engineering student, originally from Bologna, Italy. I am currently working on my senior thesis within [Princeton’s](https://www.princeton.edu/) [Mechanical and Aerospace Engineering (MAE)](https://mae.princeton.edu/) department, under the cross-departmental supervision of [Bartolomeo Stellato](https://stella.to/group/). I have previously carried out two fully-funded research projects within the [Oxford Control Group](https://eng.ox.ac.uk/control/), in collaboration with [Kostas Margellos](https://eng.ox.ac.uk/people/kostas-margellos/) and [Idris Kempf](https://www.keble.ox.ac.uk/people/idris-kempf/).
+I am an undergraduate Oxford Engineering student, originally from Bologna, Italy. I am currently working on my senior thesis within [Princeton’s](https://www.princeton.edu/) [Mechanical and Aerospace Engineering (MAE)](https://mae.princeton.edu/) department, under the cross-departmental supervision of [Bartolomeo Stellato](https://stella.to). I have previously carried out two fully-funded research projects within the [Oxford Control Group](https://eng.ox.ac.uk/control/), in collaboration with [Kostas Margellos](https://eng.ox.ac.uk/people/kostas-margellos/) and [Idris Kempf](https://www.keble.ox.ac.uk/people/idris-kempf/).
 
 My research interests revolve around the fields of optimisation, control, machine learning, and their intersection. In particular, my current work focuses on conformal performance guarantees of first-order methods for parametric optimisation problems. I am most interested in real-time and safety-critical applications within uncertain environments, and devising high-throughput algorithms using data to inform decisions.
 
