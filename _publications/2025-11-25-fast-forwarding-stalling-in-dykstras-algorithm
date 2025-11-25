@@ -6,6 +6,6 @@ excerpt: "Constrained quadratic programs and Euclidean projections are ubiquitou
 date: 2025-11-24
 venue: 'arXiv preprint arXiv:2511.18132'
 paperurl: 'https://arxiv.org/pdf/2511.18132'
-citation: 'Claudio Vestini, Idris Kempf. (2025). &quot;Fast-Forwarding Stalling in Dykstra's Algorithm.&quot; <i>arXiv preprint arXiv:2511.18132</i>.'
+citation: "Claudio Vestini, Idris Kempf. (2025). &quot;Fast-Forwarding Stalling in Dykstra's Algorithm.&quot; <i>arXiv preprint arXiv:2511.18132</i>."
 ---
 The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
