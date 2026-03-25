@@ -84,7 +84,9 @@ publication_category:
   books:
     title: 'Books'
   manuscripts:
-    title: 'Manuscripts and Preprints'    
+    title: 'Manuscripts and Preprints'
+  3yp:
+    title: 'Oxford Third-Year Project (3YP)'
   conferences:
     title: 'Conference Papers'
   journal:
