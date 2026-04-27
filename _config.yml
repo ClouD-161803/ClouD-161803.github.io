@@ -87,6 +87,8 @@ publication_category:
     title: 'Manuscripts and Preprints'
   3yp:
     title: 'Oxford Third-Year Project (3YP)'
+  thesis:
+    title: 'Princeton Senior Thesis (4YP)'
   conferences:
     title: 'Conference Papers'
   journal:
