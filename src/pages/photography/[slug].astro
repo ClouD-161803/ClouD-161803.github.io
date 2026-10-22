@@ -1,0 +1,115 @@
+---
+import type { ImageMetadata } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Gallery from '../../components/Gallery.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import data from '../../data/photography.json';
+
+type Project = (typeof data.projects)[number];
+
+export function getStaticPaths() {
+  return data.projects.map((project, i) => ({
+    params: { slug: project.slug },
+    props: { project, previous: data.projects[i - 1] ?? null, next: data.projects[i + 1] ?? null },
+  }));
+}
+
+const { project, previous, next } = Astro.props as {
+  project: Project;
+  previous: Project | null;
+  next: Project | null;
+};
+
+const assets = import.meta.glob<{ default: ImageMetadata }>('/src/assets/photography/**/*.jpg', {
+  eager: true,
+});
+const items = project.images.map((image) => ({
+  src: assets[`/src/assets/photography/${image.file}`].default,
+  alt: image.alt,
+  caption: project.title,
+}));
+---
+
+<Base title={project.title} description={project.description} width="wide">
+  <header class="project-header">
+    <h1 class="page-title">{project.title}</h1>
+    <p class="project-year">{project.year}</p>
+    <p class="quiet">{project.description}</p>
+  </header>
+  <Gallery items={items} layout="flow" eager={2} />
+  {
+    project.videos.length > 0 && (
+      <p class="quiet">
+        A video of this project is on <a href={project.url}>Adobe Portfolio</a>.
+      </p>
+    )
+  }
+  <nav class="project-nav" aria-label="Projects">
+    {
+      previous && (
+        <a href={`/photography/${previous.slug}/`} rel="prev">
+          <span class="project-nav-label">previous</span>
+          {previous.title}
+        </a>
+      )
+    }
+    {
+      next && (
+        <a href={`/photography/${next.slug}/`} rel="next">
+          <span class="project-nav-label">next</span>
+          {next.title}
+        </a>
+      )
+    }
+  </nav>
+  <p class="back"><a href="/photography/">back to photography</a></p>
+  <Lightbox />
+</Base>
+
+<style>
+  .project-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .project-header .quiet {
+    max-width: var(--measure-prose);
+  }
+
+  .project-year {
+    margin-top: 0.75rem;
+    font-size: var(--fs-1);
+    color: var(--color-subtle);
+  }
+
+  .project-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+    font-size: var(--fs-1);
+  }
+
+  .project-nav a {
+    text-decoration: none;
+  }
+
+  .project-nav a[rel='next'] {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .project-nav a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .project-nav-label {
+    display: block;
+    color: var(--color-subtle);
+  }
+</style>

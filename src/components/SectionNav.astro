@@ -1,0 +1,50 @@
+---
+// the row of page names that a group of pages shares, in the place of the page title. the current
+// page is the h1, and the others are links at low opacity
+interface Props {
+  current: string;
+}
+
+const groups: Record<string, { label: string; href: string }[]> = {
+  writing: [
+    { label: 'Publications', href: '/publications/' },
+    { label: 'Projects', href: '/projects/' },
+    { label: 'Essays', href: '/essays/' },
+  ],
+  arts: [
+    { label: 'Photography', href: '/photography/' },
+    { label: 'Art', href: '/art/' },
+    { label: 'Music', href: '/music/' },
+  ],
+};
+
+const { current } = Astro.props;
+const group = Object.values(groups).find((pages) => pages.some((page) => page.href === current));
+if (!group) throw new Error(`SectionNav: ${current} is not in a group`);
+const name = Object.keys(groups).find((key) => groups[key] === group);
+const other = Object.entries(groups).find(([, pages]) => pages !== group)!;
+// the groups stand in the top right in the order of the object, hence the other group is to the
+// right of a writing page and to the left of an arts page, and the arrow points that way
+const otherIsRight = Object.keys(groups).indexOf(other[0]) > Object.keys(groups).indexOf(name!);
+---
+
+<nav class="section-nav" aria-label={name}>
+  {
+    group.map((page) =>
+      page.href === current ? (
+        <h1>
+          <a href={page.href} aria-current="page">
+            {page.label}
+          </a>
+        </h1>
+      ) : (
+        <a href={page.href}>{page.label}</a>
+      ),
+    )
+  }
+</nav>
+<nav class="section-other" aria-label={other[0]}>
+  {!otherIsRight && <span class="section-arrow" aria-hidden="true">←</span>}
+  {other[1].map((page) => <a href={page.href}>{page.label.toLowerCase()}</a>)}
+  {otherIsRight && <span class="section-arrow" aria-hidden="true">→</span>}
+</nav>

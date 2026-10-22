@@ -1,6 +1,6 @@
-The MIT License (MIT)
+MIT License
 
-Copyright (c) 2016 Michael Rose
+Copyright (c) 2026 Claudio Vestini
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+The license above covers the code of this repository and not its content.
+The texts under src/content/ and in the pages, the images under src/assets/
+and public/images/, and the documents under public/files/ are the work of
+Claudio Vestini, and all rights to them are reserved unless a file says
+otherwise.

@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionNav from '../../components/SectionNav.astro';
+import { getPosts } from '../../lib/posts';
+import { isoDate } from '../../lib/date';
+
+const posts = await getPosts();
+const years = new Map<number, typeof posts>();
+for (const post of posts) {
+  const year = post.data.date.getUTCFullYear();
+  years.set(year, [...(years.get(year) ?? []), post]);
+}
+const rank = new Map(posts.map((post, i) => [post.id, Math.min(i, 12)]));
+const dayMonth = (date: Date) =>
+  date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+// a reading speed of 220 words a minute, never under one minute
+const minutes = (body: string | undefined) =>
+  Math.max(1, Math.round((body ?? '').split(/\s+/).filter(Boolean).length / 220));
+---
+
+<Base title="Essays" description="Essays by Claudio Vestini.">
+  <SectionNav current="/essays/" />
+  <ul class="posts">
+    {
+      [...years.entries()].map(([year, list]) => (
+        <li class="posts-year">
+          <span class="year-mark" aria-hidden="true">{year}</span>
+          <ul class="posts-list" aria-label={String(year)}>
+            {list.map((post) => (
+              <li class="slide-enter" style={`--enter-stage:${rank.get(post.id)}`}>
+                <a href={`/essays/${post.id}/`}>
+                  <span class="posts-title">{post.data.title}</span>
+                  <span class="posts-meta">
+                    <time datetime={isoDate(post.data.date)}>{dayMonth(post.data.date)}</time> · {minutes(post.body)} min
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

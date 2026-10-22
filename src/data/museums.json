@@ -1,0 +1,214 @@
+{
+  "Irish Museum of Modern Art": {
+    "url": "https://imma.ie/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Irish%20Museum%20of%20Modern%20Art%2C%20Dublin"
+  },
+  "National Gallery of Ireland": {
+    "url": "https://www.nationalgallery.ie/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=National%20Gallery%20of%20Ireland%2C%20Dublin"
+  },
+  "National Gallery of Scotland": {
+    "url": "https://www.nationalgalleries.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=National%20Gallery%20of%20Scotland%2C%20Edinburgh"
+  },
+  "Modern One": {
+    "url": "https://www.nationalgalleries.org/visit/modern-one",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Modern%20One%2C%20Edinburgh"
+  },
+  "Agung Rai Museum of Art": {
+    "url": "https://www.armabali.com/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Agung%20Rai%20Museum%20of%20Art%2C%20Bali"
+  },
+  "Art Gallery of Ontario": {
+    "url": "https://ago.ca/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Art%20Gallery%20of%20Ontario%2C%20Toronto"
+  },
+  "Astrup Fearnley Museum": {
+    "url": "https://www.afmuseet.no/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Astrup%20Fearnley%20Museum%2C%20Oslo"
+  },
+  "Barnes Foundation": {
+    "url": "https://www.barnesfoundation.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Barnes%20Foundation%2C%20Philadelphia"
+  },
+  "Blanton Museum of Art": {
+    "url": "https://blantonmuseum.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Blanton%20Museum%20of%20Art%2C%20Austin"
+  },
+  "Brooklyn Museum": {
+    "url": "https://www.brooklynmuseum.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Brooklyn%20Museum%2C%20New%20York"
+  },
+  "Courtauld Gallery": {
+    "url": "https://courtauld.ac.uk/gallery/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Courtauld%20Gallery%2C%20London"
+  },
+  "Denver Art Museum": {
+    "url": "https://www.denverartmuseum.org/en",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Denver%20Art%20Museum%2C%20Denver"
+  },
+  "Galleri Fineart": {
+    "url": "https://www.fineart.no/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Galleri%20Fineart%2C%20Oslo"
+  },
+  "Gallerie d'Italia": {
+    "url": "https://www.gallerieditalia.com/it/milano/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Gallerie%20d'Italia%2C%20Milan"
+  },
+  "Harvard Art Museums": {
+    "url": "https://harvardartmuseums.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Harvard%20Art%20Museums%2C%20Cambridge%2C%20Massachusetts"
+  },
+  "Hong Kong Museum of Art": {
+    "url": "https://hk.art.museum/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Hong%20Kong%20Museum%20of%20Art%2C%20Hong%20Kong"
+  },
+  "Jealous Studio": {
+    "url": "https://jealousgallery.com/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Jealous%20Studio%2C%20London"
+  },
+  "Lady Lever Gallery": {
+    "url": "https://www.liverpoolmuseums.org.uk/lady-lever-art-gallery",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Lady%20Lever%20Gallery%2C%20Liverpool"
+  },
+  "M+": {
+    "url": "https://www.mplus.org.hk/en/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=M%2B%2C%20Hong%20Kong"
+  },
+  "MACAAL Museum": {
+    "url": "https://macaal.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=MACAAL%20Museum%2C%20Marrakech"
+  },
+  "MUNCH Museum": {
+    "url": "https://www.munch.no/en/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=MUNCH%20Museum%2C%20Oslo"
+  },
+  "Malmö Museum": {
+    "url": "https://malmo.se/museer",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Malm%C3%B6%20Museum%2C%20Malm%C3%B6"
+  },
+  "McNay Art Museum": {
+    "url": "https://www.mcnayart.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=McNay%20Art%20Museum%2C%20San%20Antonio"
+  },
+  "Moco Museum": {
+    "url": "https://www.mocomuseum.com/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Moco%20Museum%2C%20London"
+  },
+  "Moderna Museet, Malmö": {
+    "url": "https://www.modernamuseet.se/en/malmo/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Moderna%20Museet%2C%20Malm%C3%B6"
+  },
+  "Moderna Museet, Stockholm": {
+    "url": "https://www.modernamuseet.se/en/stockholm/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Moderna%20Museet%2C%20Stockholm"
+  },
+  "Museum of Contemporary Art": {
+    "url": "https://mcachicago.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Museum%20of%20Contemporary%20Art%2C%20Chicago"
+  },
+  "Museum of Fine Arts": {
+    "url": "https://www.mfa.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Museum%20of%20Fine%20Arts%2C%20Boston"
+  },
+  "National Gallery": {
+    "url": "https://www.nationalgallery.org.uk/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=National%20Gallery%2C%20London"
+  },
+  "National Museum (1-5) and MUNCH Museum (6-10)": {
+    "url": "https://www.nasjonalmuseet.no/en/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=National%20Museum%2C%20Oslo"
+  },
+  "National Museum, Oslo": {
+    "url": "https://www.nasjonalmuseet.no/en/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=National%20Museum%2C%20Oslo"
+  },
+  "National Museum, Stockholm": {
+    "url": "https://www.nationalmuseum.se/en",
+    "maps": "https://www.google.com/maps/search/?api=1&query=National%20Museum%2C%20Stockholm"
+  },
+  "National Portrait Gallery": {
+    "url": "https://www.npg.org.uk/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=National%20Portrait%20Gallery%2C%20London"
+  },
+  "No.9 Cork Street": {
+    "url": "https://www.frieze.com/no9-cork-street",
+    "maps": "https://www.google.com/maps/search/?api=1&query=No.9%20Cork%20Street%2C%20London"
+  },
+  "North Carolina Museum of Art": {
+    "url": "https://ncartmuseum.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=North%20Carolina%20Museum%20of%20Art%2C%20Raleigh"
+  },
+  "Ny Carlsberg Glyptotek": {
+    "url": "https://glyptoteket.com/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Ny%20Carlsberg%20Glyptotek%2C%20Copenhagen"
+  },
+  "Philadelphia Museum of Art": {
+    "url": "https://www.philamuseum.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Philadelphia%20Museum%20of%20Art%2C%20Philadelphia"
+  },
+  "Philip Mould Gallery": {
+    "url": "https://philipmould.com/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Philip%20Mould%20Gallery%2C%20London"
+  },
+  "Pinacoteca Ambrosiana": {
+    "url": "https://www.ambrosiana.it/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Pinacoteca%20Ambrosiana%2C%20Milan"
+  },
+  "Princeton University Art Museum": {
+    "url": "https://artmuseum.princeton.edu/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Princeton%20University%20Art%20Museum%2C%20Princeton"
+  },
+  "Royal Academy of Arts": {
+    "url": "https://www.royalacademy.org.uk/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Royal%20Academy%20of%20Arts%2C%20London"
+  },
+  "Smithsonian American Art Museum": {
+    "url": "https://americanart.si.edu/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Smithsonian%20American%20Art%20Museum%2C%20Washington%20DC"
+  },
+  "Statens Museum for Kunst": {
+    "url": "https://www.smk.dk/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Statens%20Museum%20for%20Kunst%2C%20Copenhagen"
+  },
+  "Szépművészeti Múzeum": {
+    "url": "https://www.szepmuveszeti.hu/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Sz%C3%A9pm%C5%B1v%C3%A9szeti%20M%C3%BAzeum%2C%20Budapest"
+  },
+  "The Art Institute of Chicago": {
+    "url": "https://www.artic.edu/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=The%20Art%20Institute%20of%20Chicago%2C%20Chicago"
+  },
+  "The Broad": {
+    "url": "https://www.thebroad.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=The%20Broad%2C%20Los%20Angeles"
+  },
+  "The Getty Museum": {
+    "url": "https://www.getty.edu/visit/center/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=The%20Getty%20Museum%2C%20Los%20Angeles"
+  },
+  "The Met": {
+    "url": "https://www.metmuseum.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=The%20Met%2C%20New%20York"
+  },
+  "The MoMA": {
+    "url": "https://www.moma.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=The%20MoMA%2C%20New%20York"
+  },
+  "The National Gallery": {
+    "url": "https://www.nga.gov/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=The%20National%20Gallery%2C%20Washington%20DC"
+  },
+  "The San Diego Museum of Art": {
+    "url": "https://www.sdmart.org/",
+    "maps": "https://www.google.com/maps/search/?api=1&query=The%20San%20Diego%20Museum%20of%20Art%2C%20San%20Diego"
+  },
+  "Walker Art Gallery": {
+    "url": "https://www.liverpoolmuseums.org.uk/walker-art-gallery",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Walker%20Art%20Gallery%2C%20Liverpool"
+  },
+  "de Young Museum": {
+    "url": "https://www.famsf.org/visit/de-young",
+    "maps": "https://www.google.com/maps/search/?api=1&query=de%20Young%20Museum%2C%20San%20Francisco"
+  }
+}

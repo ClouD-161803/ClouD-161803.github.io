@@ -1,0 +1,67 @@
+{
+  "ClouD-161803/dykstra-projection": {
+    "full_name": "ClouD-161803/dykstra-projection",
+    "html_url": "https://github.com/ClouD-161803/dykstra-projection",
+    "description": "Project investigating Dykstra's algorithm for Hilbert space projection onto convex sets' intersection",
+    "language": "Python",
+    "stargazers_count": 1,
+    "pushed_at": "2026-10-20T22:47:38Z",
+    "homepage": "",
+    "size": 39597,
+    "topics": [],
+    "archived": false,
+    "fetched_at": "2026-10-22T07:31:41.626Z"
+  },
+  "ClouD-161803/solar-system-matlab": {
+    "full_name": "ClouD-161803/solar-system-matlab",
+    "html_url": "https://github.com/ClouD-161803/solar-system-matlab",
+    "description": "Animation of the solar system in MATLAB in both 2D and 3D using real-world NASA data",
+    "language": "MATLAB",
+    "stargazers_count": 1,
+    "pushed_at": "2026-09-30T00:20:18Z",
+    "homepage": "",
+    "size": 18846,
+    "topics": [],
+    "archived": false,
+    "fetched_at": "2026-10-22T07:31:41.640Z"
+  },
+  "ClouD-161803/operation-midnight-hammer-stk": {
+    "full_name": "ClouD-161803/operation-midnight-hammer-stk",
+    "html_url": "https://github.com/ClouD-161803/operation-midnight-hammer-stk",
+    "description": "STK Model of the US DOD Midnight Hammer Operation",
+    "language": "Shell",
+    "stargazers_count": 0,
+    "pushed_at": "2025-12-13T17:05:35Z",
+    "homepage": null,
+    "size": 113626,
+    "topics": [],
+    "archived": false,
+    "fetched_at": "2026-10-22T07:31:41.654Z"
+  },
+  "beeson-group/tycho": {
+    "full_name": "beeson-group/tycho",
+    "html_url": "https://github.com/beeson-group/tycho",
+    "description": null,
+    "language": null,
+    "stargazers_count": 0,
+    "pushed_at": "2026-09-30T00:16:38Z",
+    "homepage": null,
+    "size": 0,
+    "topics": [],
+    "archived": false,
+    "fetched_at": "2026-10-22T07:31:41.668Z"
+  },
+  "beeson-group/pydylan": {
+    "full_name": "beeson-group/pydylan",
+    "html_url": "https://github.com/beeson-group/pydylan",
+    "description": null,
+    "language": null,
+    "stargazers_count": 1,
+    "pushed_at": "2022-08-05T02:59:17Z",
+    "homepage": null,
+    "size": 0,
+    "topics": [],
+    "archived": false,
+    "fetched_at": "2026-10-22T07:31:41.681Z"
+  }
+}

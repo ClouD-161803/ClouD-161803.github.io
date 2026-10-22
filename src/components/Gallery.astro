@@ -1,0 +1,140 @@
+---
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+export interface GalleryItem {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  items: GalleryItem[];
+  // flow places one photograph per row and pairs consecutive portraits. grid fills 4:5 cells in 3,
+  // 2, or 1 columns
+  layout: 'flow' | 'grid';
+  // how many leading images load eagerly, i.e. roughly the first row
+  eager?: number;
+}
+
+const { items, layout, eager = 2 } = Astro.props;
+
+// a square is paired like a portrait, since a square at the full column width is as tall as it is wide
+const pairable = (image: ImageMetadata) => image.height / image.width >= 0.95;
+
+// full spans the column, half is one of a pair, and lone is an unpaired portrait at half width
+type Span = 'full' | 'half' | 'lone' | 'cell';
+const spans: Span[] = [];
+for (let i = 0; i < items.length; i++) {
+  if (layout === 'grid') {
+    spans.push('cell');
+  } else if (!pairable(items[i].src)) {
+    spans.push('full');
+  } else if (spans.length === i && i + 1 < items.length && pairable(items[i + 1].src)) {
+    spans.push('half', 'half');
+    i++;
+  } else {
+    spans.push('lone');
+  }
+}
+
+// the page padding is 1.5rem a side and the wide column 64rem, hence the 67rem breakpoint
+const sizes: Record<Span, string> = {
+  full: '(min-width: 67rem) 64rem, calc(100vw - 3rem)',
+  half: '(min-width: 67rem) 31.5rem, (min-width: 40rem) calc(50vw - 2rem), calc(100vw - 3rem)',
+  lone: '(min-width: 67rem) 31.5rem, (min-width: 40rem) calc(50vw - 2rem), calc(100vw - 3rem)',
+  cell: '(min-width: 67rem) 20.7rem, (min-width: 52rem) calc((100vw - 5rem) / 3), (min-width: 32rem) calc((100vw - 4rem) / 2), calc(100vw - 3rem)',
+};
+// two widths per image, the phone and the desktop column, keep the build output and the repository's
+// deploy time in check with a thousand photographs
+const widths = layout === 'grid' ? [480, 1024] : [1024, 2000];
+
+const full = await Promise.all(items.map((item) => getImage({ src: item.src, width: item.src.width })));
+---
+
+<ul class:list={['gallery', layout]}>
+  {
+    items.map((item, i) => (
+      <li class={spans[i]}>
+        <a
+          class="frame"
+          href={full[i].src}
+          data-lightbox
+          data-alt={item.alt}
+          data-caption={item.caption}
+        >
+          <Image
+            src={item.src}
+            alt={item.alt}
+            widths={widths}
+            sizes={sizes[spans[i]]}
+            loading={i < eager ? 'eager' : 'lazy'}
+            decoding="async"
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .gallery {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .gallery a {
+    display: block;
+  }
+
+  .gallery img {
+    width: 100%;
+  }
+
+  /* flow: landscapes span the column, portraits pair up from 40rem */
+  .flow {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 40rem) {
+    .flow {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .flow .full {
+      grid-column: 1 / -1;
+    }
+
+    .flow .lone {
+      grid-column: 1 / -1;
+      width: calc(50% - 0.5rem);
+      justify-self: start;
+    }
+  }
+
+  /* grid: 4:5 cells on the surface color, each image shown whole */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid a {
+    aspect-ratio: 1 / 1;
+  }
+
+  .grid img {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @media (min-width: 32rem) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 52rem) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

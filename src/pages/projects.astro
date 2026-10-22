@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionNav from '../components/SectionNav.astro';
+import projects from '../data/projects.json';
+import cache from '../data/github-cache.json';
+
+interface Repo {
+  full_name: string;
+  html_url: string;
+  description: string | null;
+  language: string | null;
+  stargazers_count: number;
+  pushed_at: string | null;
+  homepage: string | null;
+}
+
+// the page reads only the committed cache, hence a build without network still passes
+const repos = cache as Record<string, Repo | undefined>;
+
+function monthYear(iso: string): string {
+  return new Date(iso).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+}
+
+function hostOf(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return url;
+  }
+}
+
+const rows = projects.map((project) => {
+  const key = `${project.owner}/${project.name}`;
+  const repo = repos[key];
+  const description = project.description ?? repo?.description ?? null;
+  const language = repo?.language ?? null;
+  const stars = repo?.stargazers_count ?? 0;
+  const homepage = repo?.homepage || null;
+  return {
+    name: project.name,
+    href: repo?.html_url ?? `https://github.com/${key}`,
+    // an empty repository has neither, and the row fills itself once GitHub reports content
+    ready: Boolean(description || language),
+    description,
+    language,
+    stars: stars > 0 ? `${stars} ${stars === 1 ? 'star' : 'stars'}` : null,
+    updated: repo?.pushed_at ? monthYear(repo.pushed_at) : null,
+    homepage,
+  };
+});
+---
+
+<Base title="Projects" description="Software projects by Claudio Vestini on GitHub.">
+  <SectionNav current="/projects/" />
+  <ul class="projects">
+    {
+      rows.map((row, i) => (
+        <li class="slide-enter" style={`--enter-stage:${Math.min(i, 12)}`}>
+          <a class="project-name" href={row.href}>{row.name}</a>
+          {row.ready ? (
+            <>
+              {row.description && <p class="project-description">{row.description}</p>}
+              <p class="project-meta">
+                {row.language && <span>{row.language}</span>}
+                {row.stars && <span>{row.stars}</span>}
+                {row.updated && <span>updated {row.updated}</span>}
+                {row.homepage && <a href={row.homepage}>{hostOf(row.homepage)}</a>}
+              </p>
+            </>
+          ) : (
+            <p class="project-meta">coming soon</p>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</Base>
+
+<style>
+  .projects {
+    margin-top: 2rem;
+  }
+
+  .projects li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .projects li + li {
+    margin-top: 1.75rem;
+  }
+
+  .project-name {
+    align-self: flex-start;
+    font-size: var(--fs-3);
+    text-decoration: none;
+  }
+
+  .project-name:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .project-description {
+    max-width: 60ch;
+    font-size: var(--fs-1);
+    color: var(--color-subtle);
+  }
+
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    font-size: var(--fs-1);
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .project-meta a {
+    color: var(--color-subtle);
+  }
+</style>

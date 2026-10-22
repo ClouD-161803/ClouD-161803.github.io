@@ -1,0 +1,211 @@
+---
+// a native dialog that opens the full rendition behind every `a[data-lightbox]` on the page, with the
+// link's data-alt and data-caption. include it once per page, after the galleries
+---
+
+<dialog class="lightbox" aria-labelledby="lightbox-caption">
+  <button class="lightbox-close" type="button">close</button>
+  <figure class="lightbox-figure">
+    <img class="lightbox-image" alt="" decoding="async" />
+    <figcaption id="lightbox-caption" class="lightbox-caption" aria-live="polite"></figcaption>
+    <div class="lightbox-steps">
+      <button class="lightbox-step lightbox-previous" type="button" hidden>previous</button>
+      <button class="lightbox-step lightbox-next" type="button" hidden>next</button>
+    </div>
+  </figure>
+</dialog>
+
+<script>
+  // the page is swapped by the client router, hence the dialog and the links are looked up on every page load
+  function setup() {
+  const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox');
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[data-lightbox]'));
+
+  if (dialog && links.length > 0) {
+    const image = dialog.querySelector<HTMLImageElement>('.lightbox-image')!;
+    const caption = dialog.querySelector<HTMLElement>('.lightbox-caption')!;
+    const closeButton = dialog.querySelector<HTMLButtonElement>('.lightbox-close')!;
+    const previousButton = dialog.querySelector<HTMLButtonElement>('.lightbox-previous')!;
+    const nextButton = dialog.querySelector<HTMLButtonElement>('.lightbox-next')!;
+    const swipeThreshold = 40;
+    let opener: HTMLElement | null = null;
+    let index = -1;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const show = (i: number) => {
+      const link = links[i];
+      if (!link) return;
+      index = i;
+      // closing returns focus to the photograph last on show, not to the one first clicked
+      opener = link;
+      image.src = link.href;
+      image.alt = link.dataset.alt ?? '';
+      caption.textContent = link.dataset.caption ?? '';
+      caption.hidden = !caption.textContent;
+      const focused = document.activeElement;
+      previousButton.hidden = i === 0;
+      nextButton.hidden = i === links.length - 1;
+      // a step button hidden while focused would drop the focus on the body
+      if ((focused === previousButton && previousButton.hidden) || (focused === nextButton && nextButton.hidden)) {
+        closeButton.focus();
+      }
+    };
+
+    links.forEach((link, i) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        show(i);
+        dialog.showModal();
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener('click', () => dialog.close());
+    previousButton.addEventListener('click', () => show(index - 1));
+    nextButton.addEventListener('click', () => show(index + 1));
+
+    // a click anywhere but on the image, its caption, or a button closes the dialog
+    dialog.addEventListener('click', (event) => {
+      const target = event.target as Element;
+      if (!target.closest('img, figcaption, button')) dialog.close();
+    });
+
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') show(index + 1);
+      if (event.key === 'ArrowLeft') show(index - 1);
+    });
+
+    dialog.addEventListener(
+      'touchstart',
+      (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+        touchStartY = event.changedTouches[0].clientY;
+      },
+      { passive: true },
+    );
+
+    // a mostly horizontal swipe past the threshold steps through the list
+    dialog.addEventListener(
+      'touchend',
+      (event) => {
+        const dx = event.changedTouches[0].clientX - touchStartX;
+        const dy = event.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) < swipeThreshold || Math.abs(dx) < Math.abs(dy)) return;
+        show(dx < 0 ? index + 1 : index - 1);
+      },
+      { passive: true },
+    );
+
+    dialog.addEventListener('close', () => {
+      image.removeAttribute('src');
+      opener?.focus();
+      opener = null;
+    });
+  }
+  }
+
+  document.addEventListener('astro:page-load', setup);
+</script>
+
+<style>
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--color-void);
+    color: var(--color-text);
+  }
+
+  .lightbox::backdrop {
+    background: var(--color-void);
+  }
+
+  .lightbox-figure {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    height: 100%;
+    padding: 3.5rem 1.5rem 1.5rem;
+    cursor: zoom-out;
+  }
+
+  .lightbox-image {
+    flex: 0 1 auto;
+    min-height: 0;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    cursor: default;
+  }
+
+  .lightbox-caption {
+    flex: none;
+    margin-top: 0;
+    cursor: default;
+  }
+
+  /* on a narrow screen the step buttons sit in a row under the caption */
+  .lightbox-steps {
+    display: flex;
+    flex: none;
+    gap: 0.75rem;
+  }
+
+  .lightbox button {
+    padding: 0.3rem 0.7rem;
+    font: inherit;
+    font-size: var(--fs-1);
+    color: var(--color-subtle);
+    background: none;
+    border: 1px solid var(--color-line);
+    cursor: pointer;
+  }
+
+  .lightbox button:hover {
+    color: var(--color-text);
+    border-color: var(--color-subtle);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
+
+  /* from 64rem they sit at the edges of the figure, in the padding beside the photograph */
+  @media (min-width: 64rem) {
+    .lightbox-figure {
+      padding-inline: 8rem;
+    }
+
+    .lightbox-steps {
+      display: contents;
+    }
+
+    .lightbox-step {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-previous {
+      left: 1.5rem;
+    }
+
+    .lightbox-next {
+      right: 1.5rem;
+    }
+  }
+</style>

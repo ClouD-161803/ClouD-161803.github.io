@@ -1,0 +1,92 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Base from '../layouts/Base.astro';
+import SectionNav from '../components/SectionNav.astro';
+import data from '../data/photography.json';
+
+const assets = import.meta.glob<{ default: ImageMetadata }>('/src/assets/photography/**/*.jpg', {
+  eager: true,
+});
+const asset = (file: string) => assets[`/src/assets/photography/${file}`].default;
+const sizes =
+  '(min-width: 67rem) 20.7rem, (min-width: 52rem) calc((100vw - 5rem) / 3), (min-width: 32rem) calc((100vw - 4rem) / 2), calc(100vw - 3rem)';
+---
+
+<Base title="Photography" description="Photography projects by Claudio Vestini." width="wide">
+  <SectionNav current="/photography/" />
+  <p class="quiet">Shot on a Sony a7iii full-frame mirrorless.</p>
+  <ul class="covers">
+    {
+      data.projects.map((project, i) => (
+        <li class="slide-enter" style={`--enter-stage:${Math.min(i, 12)}`}>
+          <a href={`/photography/${project.slug}/`}>
+            <Image
+              class="frame cover"
+              src={asset(project.cover)}
+              alt=""
+              width={1024}
+              widths={[480, 1024]}
+              sizes={sizes}
+              loading={i < 3 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+            <span class="cover-title">{project.title}</span>
+            <span class="cover-year">{project.year}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
+
+<style>
+  .covers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .covers a {
+    display: block;
+    text-decoration: none;
+  }
+
+  .cover {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .cover-title {
+    display: block;
+    margin-top: 0.75rem;
+  }
+
+  .cover-year {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: var(--fs-1);
+    color: var(--color-subtle);
+  }
+
+  .covers a:hover .cover-title {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  @media (min-width: 32rem) {
+    .covers {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 52rem) {
+    .covers {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

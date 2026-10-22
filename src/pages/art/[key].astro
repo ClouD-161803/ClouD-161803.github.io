@@ -1,0 +1,136 @@
+---
+import type { ImageMetadata } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Gallery from '../../components/Gallery.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import data from '../../data/art.json';
+
+type Post = (typeof data.posts)[number];
+
+export function getStaticPaths() {
+  return data.posts.map((post, i) => ({
+    params: { key: post.key },
+    props: { post, previous: data.posts[i - 1] ?? null, next: data.posts[i + 1] ?? null },
+  }));
+}
+
+const { post, previous, next } = Astro.props as {
+  post: Post;
+  previous: Post | null;
+  next: Post | null;
+};
+
+const assets = import.meta.glob<{ default: ImageMetadata }>('/src/assets/art/**/*.jpg', {
+  eager: true,
+});
+const heading = (p: Post) => (p.title ? p.title : p.caption.split('\n')[0]);
+const items = post.images.map((image) => ({
+  src: assets[`/src/assets/art/${image.file}`].default,
+  alt: image.alt,
+  caption: heading(post),
+}));
+const description = post.title
+  ? `${post.title}, ${post.artist}, ${post.year}, at ${post.museum}, ${post.city}.`
+  : post.caption.split('\n')[0];
+---
+
+<Base title={heading(post)} description={description} width="wide">
+  <header class="post-header">
+    {
+      post.title ? (
+        <>
+          <h1 class="page-title">
+            <em>{post.title}</em>
+          </h1>
+          <p class="post-meta">
+            {post.artist}, {post.year}
+          </p>
+          <p class="post-meta">
+            {post.date && <time datetime={post.date}>{post.date}</time>}
+          </p>
+          <p class="post-meta">
+            📍 {post.museum_url ? <a href={post.museum_url}>{post.museum}</a> : post.museum},{' '}
+            {post.maps_url ? <a href={post.maps_url}>{post.city}</a> : post.city}
+            {post.flag && (
+              <>
+                {' '}<span role="img" aria-label={post.country}>{post.flag}</span>
+              </>
+            )}
+            {post.exhibition && (
+              <>
+                {' '}<span class="tag">{post.exhibition}</span>
+              </>
+            )}
+          </p>
+        </>
+      ) : (
+        <h1 class="page-title">{heading(post)}</h1>
+      )
+    }
+  </header>
+  <Gallery items={items} layout="flow" eager={2} />
+  <nav class="post-nav" aria-label="Posts">
+    {
+      previous && (
+        <a href={`/art/${previous.key}/`} rel="prev">
+          <span class="post-nav-label">previous</span>
+          {heading(previous)}
+        </a>
+      )
+    }
+    {
+      next && (
+        <a href={`/art/${next.key}/`} rel="next">
+          <span class="post-nav-label">next</span>
+          {heading(next)}
+        </a>
+      )
+    }
+  </nav>
+  <p class="back"><a href="/art/">back to art</a></p>
+  <Lightbox />
+</Base>
+
+<style>
+  .post-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .post-meta {
+    margin-top: 0.75rem;
+    font-size: var(--fs-1);
+    color: var(--color-subtle);
+  }
+
+  .post-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+    font-size: var(--fs-1);
+  }
+
+  .post-nav a {
+    text-decoration: none;
+  }
+
+  .post-nav a[rel='next'] {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .post-nav a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .post-nav-label {
+    display: block;
+    color: var(--color-subtle);
+  }
+</style>

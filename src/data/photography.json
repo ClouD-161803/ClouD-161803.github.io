@@ -1,0 +1,345 @@
+{
+  "projects": [
+    {
+      "order": 1,
+      "slug": "people-of-belice",
+      "title": "People of Belice",
+      "description": "A collection of stills from a roadtrip through Belize.",
+      "year": "2026",
+      "url": "https://claudiovestini.myportfolio.com/people-of-belice",
+      "cover": "people-of-belice/cover.jpg",
+      "images": [
+        {
+          "file": "people-of-belice/001.jpg",
+          "width": 1334,
+          "height": 2000,
+          "alt": "People of Belice, photograph 1 of 5"
+        },
+        {
+          "file": "people-of-belice/002.jpg",
+          "width": 2000,
+          "height": 1333,
+          "alt": "People of Belice, photograph 2 of 5"
+        },
+        {
+          "file": "people-of-belice/003.jpg",
+          "width": 1333,
+          "height": 2000,
+          "alt": "People of Belice, photograph 3 of 5"
+        },
+        {
+          "file": "people-of-belice/004.jpg",
+          "width": 2000,
+          "height": 1559,
+          "alt": "People of Belice, photograph 4 of 5"
+        },
+        {
+          "file": "people-of-belice/005.jpg",
+          "width": 1333,
+          "height": 2000,
+          "alt": "People of Belice, photograph 5 of 5"
+        }
+      ],
+      "videos": []
+    },
+    {
+      "order": 2,
+      "slug": "sunset-at-the-getty",
+      "title": "Sunset at The Getty",
+      "description": "A sunset view of Los Angeles as seen from the Getty Museum.",
+      "year": "2026",
+      "url": "https://claudiovestini.myportfolio.com/sunset-at-the-getty",
+      "cover": "sunset-at-the-getty/cover.jpg",
+      "images": [
+        {
+          "file": "sunset-at-the-getty/001.jpg",
+          "width": 2000,
+          "height": 1333,
+          "alt": "Sunset at The Getty, photograph 1 of 2"
+        },
+        {
+          "file": "sunset-at-the-getty/002.jpg",
+          "width": 2000,
+          "height": 1333,
+          "alt": "Sunset at The Getty, photograph 2 of 2"
+        }
+      ],
+      "videos": [
+        {
+          "id": "No7Kmsd8ZcK",
+          "url": "https://www-ccv.adobe.io/v1/player/ccv/No7Kmsd8ZcK/embed?bgcolor=%23191919&lazyLoading=true&api_key=BehancePro2View"
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "slug": "architecture-united-states",
+      "title": "Architecture: United States",
+      "description": "Architectural details in the United States including Princeton, Philadelphia, San Francisco, and San Diego.",
+      "year": "2026",
+      "url": "https://claudiovestini.myportfolio.com/architecture-united-states",
+      "cover": "architecture-united-states/cover.jpg",
+      "images": [
+        {
+          "file": "architecture-united-states/001.jpg",
+          "width": 1334,
+          "height": 2000,
+          "alt": "Architecture: United States, photograph 1 of 5"
+        },
+        {
+          "file": "architecture-united-states/002.jpg",
+          "width": 2000,
+          "height": 1126,
+          "alt": "Architecture: United States, photograph 2 of 5"
+        },
+        {
+          "file": "architecture-united-states/003.jpg",
+          "width": 1501,
+          "height": 2000,
+          "alt": "Architecture: United States, photograph 3 of 5"
+        },
+        {
+          "file": "architecture-united-states/004.jpg",
+          "width": 2000,
+          "height": 1334,
+          "alt": "Architecture: United States, photograph 4 of 5"
+        },
+        {
+          "file": "architecture-united-states/005.jpg",
+          "width": 1500,
+          "height": 2000,
+          "alt": "Architecture: United States, photograph 5 of 5"
+        }
+      ],
+      "videos": []
+    },
+    {
+      "order": 5,
+      "slug": "oxford-from-the-sky",
+      "title": "Oxford From the Sky",
+      "description": "Oxford as seen from a low-altitude Cessna 175 aircraft (this is not drone footage).",
+      "year": "2025",
+      "url": "https://claudiovestini.myportfolio.com/oxford-from-the-sky",
+      "cover": "oxford-from-the-sky/cover.jpg",
+      "images": [
+        {
+          "file": "oxford-from-the-sky/001.jpg",
+          "width": 2000,
+          "height": 1334,
+          "alt": "Oxford From the Sky, photograph 1 of 4"
+        },
+        {
+          "file": "oxford-from-the-sky/002.jpg",
+          "width": 2000,
+          "height": 1333,
+          "alt": "Oxford From the Sky, photograph 2 of 4"
+        },
+        {
+          "file": "oxford-from-the-sky/003.jpg",
+          "width": 2000,
+          "height": 1333,
+          "alt": "Oxford From the Sky, photograph 3 of 4"
+        },
+        {
+          "file": "oxford-from-the-sky/004.jpg",
+          "width": 2000,
+          "height": 1333,
+          "alt": "Oxford From the Sky, photograph 4 of 4"
+        }
+      ],
+      "videos": []
+    },
+    {
+      "order": 6,
+      "slug": "architecture-south-east-asia",
+      "title": "Architecture: South East Asia",
+      "description": "A selection of architectural shots from Hong Kong, Singapore and Bali, Indonesia.",
+      "year": "2025",
+      "url": "https://claudiovestini.myportfolio.com/architecture-south-east-asia",
+      "cover": "architecture-south-east-asia/cover.jpg",
+      "images": [
+        {
+          "file": "architecture-south-east-asia/001.jpg",
+          "width": 1334,
+          "height": 2000,
+          "alt": "Architecture: South East Asia, photograph 1 of 5"
+        },
+        {
+          "file": "architecture-south-east-asia/002.jpg",
+          "width": 2000,
+          "height": 1334,
+          "alt": "Architecture: South East Asia, photograph 2 of 5"
+        },
+        {
+          "file": "architecture-south-east-asia/003.jpg",
+          "width": 1599,
+          "height": 2000,
+          "alt": "Architecture: South East Asia, photograph 3 of 5"
+        },
+        {
+          "file": "architecture-south-east-asia/004.jpg",
+          "width": 1334,
+          "height": 2000,
+          "alt": "Architecture: South East Asia, photograph 4 of 5"
+        },
+        {
+          "file": "architecture-south-east-asia/005.jpg",
+          "width": 1334,
+          "height": 2000,
+          "alt": "Architecture: South East Asia, photograph 5 of 5"
+        }
+      ],
+      "videos": []
+    },
+    {
+      "order": 7,
+      "slug": "rio-de-janeiro",
+      "title": "People of Rio",
+      "description": "Stills of Rio de Janeiro and its inhabitants.",
+      "year": "2025",
+      "url": "https://claudiovestini.myportfolio.com/rio-de-janeiro",
+      "cover": "rio-de-janeiro/cover.jpg",
+      "images": [
+        {
+          "file": "rio-de-janeiro/001.jpg",
+          "width": 1618,
+          "height": 2000,
+          "alt": "People of Rio, photograph 1 of 3"
+        },
+        {
+          "file": "rio-de-janeiro/002.jpg",
+          "width": 1965,
+          "height": 2000,
+          "alt": "People of Rio, photograph 2 of 3"
+        },
+        {
+          "file": "rio-de-janeiro/003.jpg",
+          "width": 2000,
+          "height": 1333,
+          "alt": "People of Rio, photograph 3 of 3"
+        }
+      ],
+      "videos": []
+    },
+    {
+      "order": 8,
+      "slug": "oxford-fashion-gala",
+      "title": "Oxford Fashion Gala",
+      "description": "Looks of models at the Oxford Fashion Gala '2025.",
+      "year": "2025",
+      "url": "https://claudiovestini.myportfolio.com/oxford-fashion-gala",
+      "cover": "oxford-fashion-gala/cover.jpg",
+      "images": [
+        {
+          "file": "oxford-fashion-gala/001.jpg",
+          "width": 1333,
+          "height": 2000,
+          "alt": "Oxford Fashion Gala, photograph 1 of 9"
+        },
+        {
+          "file": "oxford-fashion-gala/002.jpg",
+          "width": 1333,
+          "height": 2000,
+          "alt": "Oxford Fashion Gala, photograph 2 of 9"
+        },
+        {
+          "file": "oxford-fashion-gala/003.jpg",
+          "width": 1333,
+          "height": 2000,
+          "alt": "Oxford Fashion Gala, photograph 3 of 9"
+        },
+        {
+          "file": "oxford-fashion-gala/004.jpg",
+          "width": 1333,
+          "height": 2000,
+          "alt": "Oxford Fashion Gala, photograph 4 of 9"
+        },
+        {
+          "file": "oxford-fashion-gala/005.jpg",
+          "width": 1333,
+          "height": 2000,
+          "alt": "Oxford Fashion Gala, photograph 5 of 9"
+        },
+        {
+          "file": "oxford-fashion-gala/006.jpg",
+          "width": 1333,
+          "height": 2000,
+          "alt": "Oxford Fashion Gala, photograph 6 of 9"
+        },
+        {
+          "file": "oxford-fashion-gala/007.jpg",
+          "width": 1333,
+          "height": 2000,
+          "alt": "Oxford Fashion Gala, photograph 7 of 9"
+        },
+        {
+          "file": "oxford-fashion-gala/008.jpg",
+          "width": 1334,
+          "height": 2000,
+          "alt": "Oxford Fashion Gala, photograph 8 of 9"
+        },
+        {
+          "file": "oxford-fashion-gala/009.jpg",
+          "width": 1333,
+          "height": 2000,
+          "alt": "Oxford Fashion Gala, photograph 9 of 9"
+        }
+      ],
+      "videos": []
+    },
+    {
+      "order": 9,
+      "slug": "keble-in-snow",
+      "title": "Keble in the Snow",
+      "description": "The first and only time I saw Keble College (the college I graduated from in Oxford) in the snow.",
+      "year": "2024",
+      "url": "https://claudiovestini.myportfolio.com/keble-in-snow",
+      "cover": "keble-in-snow/cover.jpg",
+      "images": [
+        {
+          "file": "keble-in-snow/001.jpg",
+          "width": 1334,
+          "height": 2000,
+          "alt": "Keble in the Snow, photograph 1 of 2"
+        },
+        {
+          "file": "keble-in-snow/002.jpg",
+          "width": 2000,
+          "height": 1334,
+          "alt": "Keble in the Snow, photograph 2 of 2"
+        }
+      ],
+      "videos": []
+    },
+    {
+      "order": 10,
+      "slug": "foxes-in-snow",
+      "title": "Foxes in the Snow",
+      "description": "Stills of the playful fight between two foxes within Magdalen College, Oxford.",
+      "year": "2024",
+      "url": "https://claudiovestini.myportfolio.com/foxes-in-snow",
+      "cover": "foxes-in-snow/cover.jpg",
+      "images": [
+        {
+          "file": "foxes-in-snow/001.jpg",
+          "width": 1326,
+          "height": 2000,
+          "alt": "Foxes in the Snow, photograph 1 of 3"
+        },
+        {
+          "file": "foxes-in-snow/002.jpg",
+          "width": 1344,
+          "height": 2000,
+          "alt": "Foxes in the Snow, photograph 2 of 3"
+        },
+        {
+          "file": "foxes-in-snow/003.jpg",
+          "width": 1334,
+          "height": 2000,
+          "alt": "Foxes in the Snow, photograph 3 of 3"
+        }
+      ],
+      "videos": []
+    }
+  ]
+}

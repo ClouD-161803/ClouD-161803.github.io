@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionNav from '../components/SectionNav.astro';
+import publications from '../data/publications.json';
+
+// the file runs newest first, and the sort keeps that order whatever is appended later
+const sorted = [...publications].sort((a, b) => b.date.localeCompare(a.date));
+---
+
+<Base title="Publications" description="Publications by Claudio Vestini.">
+  <section class="publications">
+    <SectionNav current="/publications/" />
+    <ul class="pub-list">
+      {
+        sorted.map((pub, i) => (
+          <li class="slide-enter" style={`--enter-stage:${Math.min(i, 12)}`}>
+            <a class="pub-title" href={pub.url}>{pub.title}</a>
+            <span class="pub-authors">{pub.authors}</span>
+            <span class="pub-venue">{pub.venue}, {pub.year}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="cv"><a href="/files/CV.pdf">curriculum vitae</a></p>
+  </section>
+</Base>
+
+<style>
+  /* the section rule in global.css adds the section gap above the publications list, which a page title does not want */
+  .publications {
+    margin-top: 0;
+  }
+</style>
