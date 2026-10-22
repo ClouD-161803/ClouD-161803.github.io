@@ -19,10 +19,10 @@ npm run build
 ```
 
 ```bash
-node --test scripts/
+node --test
 ```
 
-These install the dependencies from `package-lock.json`, start the dev server, write the static site into `dist/`, and run the tests of the caption parser and of the Instagram export import, respectively. The `prebuild` script runs `scripts/fetch-github.mjs` before every build, and `npm run preview` serves `dist/` locally.
+These install the dependencies from `package-lock.json`, start the dev server, write the static site into `dist/`, and run the tests of the caption parser, of the Instagram export import, and of the background drawing, respectively. The `prebuild` script runs `scripts/fetch-github.mjs` before every build, and `npm run preview` serves `dist/` locally.
 
 ## Layout of the repository
 
@@ -31,7 +31,7 @@ These install the dependencies from `package-lock.json`, start the dev server, w
 - `src/components/` holds the header, the row of section names, the prose wrapper, the gallery and lightbox of the photography and art pages, and the background canvas.
 - `src/content/` holds the essays and `about.md`, the text of the about page.
 - `src/data/` holds the JSON data of every list, the GitHub cache, the museum and flag lookups, and the navigation in `nav.ts`.
-- `src/lib/` holds the date formatting and the sorted list of essays.
+- `src/lib/` holds the date formatting, the sorted list of essays, and the background drawing with its test.
 - `src/assets/` holds the portrait, the monogram, the Beeson Group logo, and the optimized photographs written by the import scripts.
 - `src/styles/global.css` is the single stylesheet, with the design tokens at its top.
 - `scripts/` holds the import and fetch scripts and their tests.
