@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Dykstra's Algorithm: Stalling Resolution, Algorithmic Enhancements, and Applications in Optimal Transport",
+    "authors": "Claudio Vestini, Ryne Beeson, Bartolomeo Stellato",
+    "venue": "Senior Thesis, Department of Mechanical and Aerospace Engineering, Princeton University",
+    "year": 2026,
+    "date": "2026-04-23",
+    "url": "/files/Senior_Thesis_compressed.pdf"
+  },
+  {
+    "title": "Towards Bridging Data-Driven Control Synthesis with Hamilton-Jacobi-Bellman Theory",
+    "authors": "Claudio Vestini",
+    "venue": "MAE 546 Term Paper",
+    "year": 2025,
+    "date": "2025-12-15",
+    "url": "/files/MAE546_Term_Paper.pdf"
+  },
+  {
+    "title": "Fast-Forwarding Stalling in Dykstra's Algorithm",
+    "authors": "Claudio Vestini, Idris Kempf",
+    "venue": "arXiv preprint arXiv:2511.18132",
+    "year": 2025,
+    "date": "2025-11-22",
+    "url": "https://arxiv.org/abs/2511.18132"
+  },
+  {
+    "title": "Materials Testing for Heatshield Applications during CubeSat Re-entry with Passive Demise",
+    "authors": "Claudio Vestini, F. Naqvi, H. Moussa, A. Berresford",
+    "venue": "Third-year project, Department of Engineering Science, University of Oxford",
+    "year": 2025,
+    "date": "2025-06-27",
+    "url": "/files/CubeSat_project_report_compressed.pdf"
+  }
+]

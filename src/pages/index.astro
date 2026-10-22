@@ -1,0 +1,52 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Prose from '../components/Prose.astro';
+import profile from '../assets/profile.jpg';
+import logo from '../assets/beeson-group.png';
+import { Content as About } from '../content/about.md';
+import publications from '../data/publications.json';
+
+const recent = [...publications].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
+---
+
+<Base>
+  <section class="intro">
+    <div>
+      <h1 class="page-title">Claudio Vestini</h1>
+      <p class="affiliation">
+        <a href="https://beeson.princeton.edu/research/" aria-label="Research of the Beeson Group">
+          <Image class="affiliation-logo" src={logo} alt="" width={72} height={72} densities={[1, 2]} loading="eager" />
+        </a>
+        <a href="https://beeson.princeton.edu/">Beeson Group</a>
+      </p>
+    </div>
+    <Image
+      class="portrait"
+      src={profile}
+      alt="Claudio Vestini"
+      width={288}
+      height={288}
+      densities={[1, 2]}
+      loading="eager"
+    />
+  </section>
+
+  <Prose><About /></Prose>
+
+  <section id="publications" class="publications">
+    <h2>Recent <a href="/publications/">Publications</a></h2>
+    <p class="affiliation"><a href="/files/CV.pdf">curriculum vitae</a></p>
+    <ul class="pub-list">
+      {
+        recent.map((pub, i) => (
+          <li class="slide-enter" style={`--enter-stage:${i}`}>
+            <a class="pub-title" href={pub.url}>{pub.title}</a>
+            <span class="pub-authors">{pub.authors}</span>
+            <span class="pub-venue">{pub.venue}, {pub.year}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>
