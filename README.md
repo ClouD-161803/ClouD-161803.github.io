@@ -251,10 +251,8 @@ The notes section is not in this release, and nothing of it is built yet. A firs
 
 ## Still to do
 
-The site is complete locally and nothing is committed or pushed. These are the steps that remain, all Claudio's.
+The site is live at https://claudiovestini.com, deployed by the workflow from `master`, with the domain's DNS records set and HTTPS enforced. These are the steps that remain, all Claudio's.
 
-1. Read the branch `rebuild-2026-10`, and commit it with the usual sequence.
-2. Set the Pages source to "GitHub Actions" under the repository's Settings, Pages, before the first push, then push `master`.
-3. Check the DNS records of `claudiovestini.com` with the two `dig` commands in the Custom domain section, enter the domain in the Pages custom-domain field after the first deployment, and tick "Enforce HTTPS" once the certificate is issued.
-4. Write a one-line description in the frontmatter of the Cuppers final match report if a search snippet other than the site description is wanted.
-5. Import the older Instagram posts from the Google Takeout export as described in the Art section, with their shortcodes, dates, and captions.
+1. Write a one-line `description` in the frontmatter of any essay whose search snippet should differ from the site description.
+2. Finish the write-on animation of the monogram in `website-assets/signature/` beside the checkout, and copy it into the header with `tools/integrate.py` once its crossings are right.
+3. Choose an orbit background from the audition in `website-assets/ab/orbits/`, if one beats the plum, and drop its component in for `src/components/Plum.astro`.
