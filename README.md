@@ -4,7 +4,7 @@ The personal website of Claudio Vestini: an about page with his recent publicati
 
 ## Running the site
 
-The site needs Node 22.23.4 or newer, the version in `.nvmrc` and in the `engines` field of `package.json`. The four commands are
+The site needs Node 22.23.4 or newer, the floor in the `engines` field of `package.json`, and `.nvmrc` and the deploy workflow use Node 24, the current long-term release, since the runner's Node 22 fell one patch short. The four commands are
 
 ```bash
 npm ci
