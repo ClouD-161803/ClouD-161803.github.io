@@ -1,0 +1,817 @@
+/* tokens. a Quartz subsite copies this block to match the site */
+:root {
+  color-scheme: dark;
+
+  --color-void: #050505;
+  --color-surface: #0f0f0e;
+  --color-line: #232320;
+  --color-text: #f2f2ef;
+  --color-subtle: #a6a6a0;
+  --color-muted: #7c7c76;
+  --color-accent: #f08050;
+  --color-mark: #c94fe6;
+
+  --font-ui: 'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-code: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-serif: 'Crimson Pro Variable', 'Crimson Pro', Georgia, 'Times New Roman', serif;
+
+  --fs-0: 0.8rem;
+  --fs-1: 0.875rem;
+  --fs-2: 1rem;
+  --fs-3: 1.125rem;
+  --fs-4: 1.5rem;
+  --fs-5: 2rem;
+  --fs-prose: 1.25rem;
+  --lh-prose: 1.6;
+
+  --measure-read: 42rem;
+  --measure-wide: 64rem;
+  --measure-prose: 35rem;
+  --pad-x: 1.5rem;
+  --pad-top: 2.5rem;
+  --space-section: 3.5rem;
+}
+
+@media (min-width: 40em) {
+  :root {
+    --pad-top: 4rem;
+    --fs-prose: 1.3125rem;
+  }
+}
+
+/* reset and base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  /* the gutter is reserved on every page, hence a page too short to scroll does not shift the column */
+  scrollbar-gutter: stable;
+  background: var(--color-void);
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  font-size: 100%;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* a list with a class is layout, a bare list is content */
+ul[class],
+ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgb(201 79 230 / 0.45);
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+/* page skeleton */
+/* the skip link sits above the viewport until it takes focus */
+.skip {
+  position: absolute;
+  top: 1rem;
+  left: var(--pad-x);
+  z-index: 1;
+  padding: 0.3rem 0.7rem;
+  font-size: var(--fs-1);
+  background: var(--color-void);
+  border: 1px solid var(--color-line);
+  transform: translateY(-200%);
+}
+
+.skip:focus {
+  transform: none;
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+/* the reading column and the wide column are centred, and the header spans the page */
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: calc(var(--measure-read) + 2 * var(--pad-x));
+  margin-inline: auto;
+  padding: 3rem var(--pad-x) 5rem;
+}
+
+.main:focus {
+  outline: none;
+}
+
+.main.wide {
+  max-width: calc(var(--measure-wide) + 2 * var(--pad-x));
+}
+
+@media (min-width: 40em) {
+  .main {
+    padding-top: 4rem;
+  }
+}
+
+/* motion: content rises in with a stagger, the structure of the slide-enter of antfu.me with the
+   distance, the duration, the easing, and the step of t3.gg (20 px, 0.6 s, an overshooting ease-out, 50 ms). an element with
+   .slide-enter takes its rank from --enter-stage, and the children of .slide-enter-content take
+   theirs from their position, up to twenty. nothing moves when the visitor prefers reduced motion */
+@keyframes slide-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .slide-enter,
+  .slide-enter-content > * {
+    --enter-stage: 0;
+    --enter-step: 50ms;
+    --enter-initial: 0ms;
+    animation: slide-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both 1;
+    animation-delay: calc(var(--enter-initial) + var(--enter-stage) * var(--enter-step));
+  }
+
+  /* the items of a list start after the block that holds them has begun to show */
+  .main .slide-enter {
+    --enter-initial: 120ms;
+  }
+
+  .slide-enter-content > *:nth-child(1) {
+    --enter-stage: 1;
+  }
+
+  .slide-enter-content > *:nth-child(2) {
+    --enter-stage: 2;
+  }
+
+  .slide-enter-content > *:nth-child(3) {
+    --enter-stage: 3;
+  }
+
+  .slide-enter-content > *:nth-child(4) {
+    --enter-stage: 4;
+  }
+
+  .slide-enter-content > *:nth-child(5) {
+    --enter-stage: 5;
+  }
+
+  .slide-enter-content > *:nth-child(6) {
+    --enter-stage: 6;
+  }
+
+  .slide-enter-content > *:nth-child(7) {
+    --enter-stage: 7;
+  }
+
+  .slide-enter-content > *:nth-child(8) {
+    --enter-stage: 8;
+  }
+
+  .slide-enter-content > *:nth-child(9) {
+    --enter-stage: 9;
+  }
+
+  .slide-enter-content > *:nth-child(10) {
+    --enter-stage: 10;
+  }
+
+  .slide-enter-content > *:nth-child(11) {
+    --enter-stage: 11;
+  }
+
+  .slide-enter-content > *:nth-child(12) {
+    --enter-stage: 12;
+  }
+
+  .slide-enter-content > *:nth-child(13) {
+    --enter-stage: 13;
+  }
+
+  .slide-enter-content > *:nth-child(14) {
+    --enter-stage: 14;
+  }
+
+  .slide-enter-content > *:nth-child(15) {
+    --enter-stage: 15;
+  }
+
+  .slide-enter-content > *:nth-child(16) {
+    --enter-stage: 16;
+  }
+
+  .slide-enter-content > *:nth-child(17) {
+    --enter-stage: 17;
+  }
+
+  .slide-enter-content > *:nth-child(18) {
+    --enter-stage: 18;
+  }
+
+  .slide-enter-content > *:nth-child(19) {
+    --enter-stage: 19;
+  }
+
+  .slide-enter-content > *:nth-child(20) {
+    --enter-stage: 20;
+  }
+
+  .slide-enter-content > *:nth-child(n + 21) {
+    --enter-stage: 20;
+  }
+}
+
+/* the view transition between pages is a short crossfade, and the header does not take part */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.2s;
+}
+
+/* the plum canvas behind the page, faded out towards the centre so that the text stays clear */
+.plum {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(circle, transparent, black);
+  mask-image: radial-gradient(circle, transparent, black);
+}
+
+/* header: the mark at the top left, the page links and the icon links at the top right */
+.site-header {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.5rem 1.5rem 0.5rem 6.5rem;
+  font-size: var(--fs-1);
+}
+
+.site-mark {
+  position: absolute;
+  top: 0.9rem;
+  left: 1.25rem;
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  color: var(--color-mark);
+  transition: opacity 0.2s;
+}
+
+.site-mark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* the viewBox is about 1300 units tall, hence 16 units are a little under a pixel at 4rem, which keeps the thin strokes */
+.site-mark path {
+  stroke: currentColor;
+  stroke-width: 16;
+  stroke-linejoin: round;
+}
+
+
+.site-mark:hover {
+  opacity: 0.7;
+}
+
+@media (min-width: 80em) {
+  /* on a wide screen the mark stays in the corner while the page scrolls, as a way home */
+  .site-mark {
+    position: fixed;
+  }
+}
+
+.site-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem 1.25rem;
+}
+
+.site-nav a {
+  color: var(--color-subtle);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-list a {
+  padding-bottom: 0.1em;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover {
+  color: var(--color-text);
+}
+
+.nav-list a[aria-current='page'] {
+  color: var(--color-text);
+  border-bottom-color: var(--color-mark);
+}
+
+.nav-icon + .nav-icon {
+  margin-left: -0.35rem;
+}
+
+.nav-rule {
+  width: 1px;
+  height: 1em;
+  margin-inline: 0.25rem;
+  background: var(--color-line);
+}
+
+.nav-icon a {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-bottom: 0;
+}
+
+.nav-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* the row of page names shared by a group of pages */
+.section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  font-size: var(--fs-4);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 40em) {
+  .section-nav {
+    font-size: var(--fs-5);
+  }
+}
+
+.section-nav h1 {
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.section-nav a {
+  color: var(--color-text);
+  opacity: 0.25;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.section-nav a:hover {
+  opacity: 0.55;
+}
+
+.section-nav a[aria-current='page'] {
+  opacity: 1;
+}
+
+/* the quiet line under the row that points at the other group */
+.section-other {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  margin-top: 0.5rem;
+  font-size: var(--fs-1);
+}
+
+.section-other a {
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.section-other a:hover {
+  color: var(--color-text);
+}
+
+.section-arrow {
+  color: var(--color-muted);
+}
+
+/* page furniture */
+.page-title {
+  font-size: var(--fs-4);
+}
+
+@media (min-width: 40em) {
+  .page-title {
+    font-size: var(--fs-5);
+  }
+}
+
+.quiet {
+  margin-top: 1.5rem;
+  color: var(--color-subtle);
+}
+
+.back {
+  margin-top: 3rem;
+  font-size: var(--fs-1);
+}
+
+.back a {
+  color: var(--color-subtle);
+}
+
+/* images sit on a thin surface frame, in prose and in galleries alike */
+.frame,
+.portrait,
+.prose img {
+  padding: 0.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 3px;
+}
+
+figcaption {
+  margin-top: 0.75rem;
+  font-size: var(--fs-0);
+  color: var(--color-subtle);
+}
+
+/* about page */
+.intro {
+  display: grid;
+  max-width: var(--measure-prose);
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.portrait {
+  order: -1;
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
+}
+
+@media (min-width: 40em) {
+  .intro {
+    grid-template-columns: 1fr auto;
+  }
+
+  .portrait {
+    order: 0;
+    width: 9rem;
+    height: 9rem;
+  }
+}
+
+.publications {
+  margin-top: var(--space-section);
+}
+
+.publications h2 {
+  font-size: var(--fs-3);
+}
+
+.pub-list {
+  margin-top: 1.5rem;
+}
+
+.publications li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.publications li + li {
+  margin-top: 1.5rem;
+}
+
+.pub-title {
+  max-width: 60ch;
+  text-decoration: none;
+}
+
+.pub-title:hover,
+.pub-title:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.pub-authors,
+.pub-venue {
+  font-size: var(--fs-1);
+  color: var(--color-subtle);
+}
+
+.pub-venue {
+  font-style: italic;
+}
+
+.cv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin-top: 2rem;
+}
+
+/* the research group line under the name on the about page, and the CV line under the publications heading */
+.affiliation {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  font-size: var(--fs-2);
+}
+
+.publications .affiliation {
+  margin-top: 0.5rem;
+}
+
+.affiliation a {
+  color: var(--color-subtle);
+  text-decoration: none;
+}
+
+.affiliation a:hover {
+  color: var(--color-text);
+}
+
+.affiliation-logo {
+  display: block;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+/* blog list */
+.posts {
+  margin-top: 1rem;
+}
+
+/* each year is a group with the year drawn large and faint behind its first entries */
+.posts-year {
+  position: relative;
+  padding-top: 3.5rem;
+}
+
+.posts-year + .posts-year {
+  margin-top: 1rem;
+}
+
+.year-mark {
+  position: absolute;
+  top: -0.5rem;
+  left: -2rem;
+  font-family: 'EB Garamond Variable', 'EB Garamond', Georgia, serif;
+  font-size: 5.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-line);
+  pointer-events: none;
+  user-select: none;
+}
+
+.posts a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  padding-block: 0.6rem;
+  text-decoration: none;
+}
+
+.posts-title {
+  font-size: var(--fs-3);
+}
+
+.posts-meta {
+  font-size: var(--fs-1);
+  color: var(--color-subtle);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.posts a:hover .posts-title {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+/* one post */
+.post-note {
+  margin-top: 0.5rem;
+  font-size: var(--fs-1);
+  color: var(--color-subtle);
+}
+
+.post-header {
+  margin-bottom: 2.5rem;
+}
+
+.post-date {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: var(--fs-1);
+  color: var(--color-subtle);
+}
+
+/* prose, the reading styles for a Markdown body */
+.prose {
+  max-width: var(--measure-prose);
+  font-family: var(--font-serif);
+  font-weight: 430;
+  font-size: var(--fs-prose);
+  line-height: var(--lh-prose);
+}
+
+.prose > * + * {
+  margin-top: 1.1em;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-ui);
+  line-height: 1.3;
+}
+
+.prose h2 {
+  margin-top: 2.4em;
+  font-size: var(--fs-3);
+}
+
+.prose h3 {
+  margin-top: 2em;
+  font-size: var(--fs-2);
+}
+
+.prose h2 + *,
+.prose h3 + * {
+  margin-top: 0.75em;
+}
+
+.prose strong {
+  font-weight: 600;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+}
+
+.prose li + li {
+  margin-top: 0.4em;
+}
+
+.prose li::marker {
+  color: var(--color-muted);
+}
+
+.prose blockquote {
+  padding-left: 1.25em;
+  border-left: 2px solid var(--color-line);
+  color: var(--color-subtle);
+  font-style: italic;
+}
+
+.prose code {
+  font-family: var(--font-code);
+  font-size: 0.82em;
+  padding: 0.1em 0.35em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 3px;
+}
+
+/* the !important overrides the inline background that Shiki writes on each code block */
+.prose pre {
+  font-family: var(--font-code);
+  font-size: var(--fs-1);
+  line-height: 1.6;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+}
+
+.prose pre code {
+  font-size: inherit;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.prose figure {
+  margin-block: 2em;
+}
+
+.prose figcaption {
+  font-family: var(--font-ui);
+}
+
+.prose hr {
+  width: 3rem;
+  margin-block: 2.5em;
+  border: 0;
+  border-top: 1px solid var(--color-muted);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+  font-size: var(--fs-1);
+}
+
+.prose th,
+.prose td {
+  padding: 0.4em 0.75em 0.4em 0;
+  text-align: left;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.prose .signoff {
+  margin-top: 3em;
+  text-align: right;
+}
+
+/* a short label after a line of text, e.g. the exhibition on the museum line of an art post */
+.tag {
+  display: inline-block;
+  padding: 0 0.5em;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-size: 0.8em;
+  line-height: 1.6;
+  color: var(--color-subtle);
+  white-space: nowrap;
+}

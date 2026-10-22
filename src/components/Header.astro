@@ -1,0 +1,81 @@
+---
+import { nav } from '../data/nav';
+// his monogram, traced from a pen drawing. the write-on animation of it is kept beside the checkout
+// in website-assets/signature/ until it is right
+import Signature from '../assets/signature.svg';
+
+// the icon links stand in a row above the page links, which form one row with a hairline between
+// the writing group and the arts group. the about page is reached through the mark at the top left
+// and has no link here
+const groups = [['/publications/', '/projects/', '/essays/'], ['/photography/', '/art/', '/music/']].map(
+  (hrefs) => hrefs.map((href) => nav.find((item) => item.href === href)!),
+);
+
+const strip = (pathname: string) => pathname.replace(/\/$/, '') || '/';
+const path = strip(Astro.url.pathname);
+const isActive = (href: string) => {
+  const target = strip(href);
+  return target === '/' ? path === '/' : path === target || path.startsWith(`${target}/`);
+};
+
+// the glyphs are Remix Icon (github-fill, linkedin-fill, Apache 2.0) and Simple Icons (googlescholar, orcid, CC0)
+const icons = [
+  {
+    label: 'GitHub',
+    href: 'https://github.com/ClouD-161803',
+    d: 'M12.001 2C6.47598 2 2.00098 6.475 2.00098 12C2.00098 16.425 4.86348 20.1625 8.83848 21.4875C9.33848 21.575 9.52598 21.275 9.52598 21.0125C9.52598 20.775 9.51348 19.9875 9.51348 19.15C7.00098 19.6125 6.35098 18.5375 6.15098 17.975C6.03848 17.6875 5.55098 16.8 5.12598 16.5625C4.77598 16.375 4.27598 15.9125 5.11348 15.9C5.90098 15.8875 6.46348 16.625 6.65098 16.925C7.55098 18.4375 8.98848 18.0125 9.56348 17.75C9.65098 17.1 9.91348 16.6625 10.201 16.4125C7.97598 16.1625 5.65098 15.3 5.65098 11.475C5.65098 10.3875 6.03848 9.4875 6.67598 8.7875C6.57598 8.5375 6.22598 7.5125 6.77598 6.1375C6.77598 6.1375 7.61348 5.875 9.52598 7.1625C10.326 6.9375 11.176 6.825 12.026 6.825C12.876 6.825 13.726 6.9375 14.526 7.1625C16.4385 5.8625 17.276 6.1375 17.276 6.1375C17.826 7.5125 17.476 8.5375 17.376 8.7875C18.0135 9.4875 18.401 10.375 18.401 11.475C18.401 15.3125 16.0635 16.1625 13.8385 16.4125C14.201 16.725 14.5135 17.325 14.5135 18.2625C14.5135 19.6 14.501 20.675 14.501 21.0125C14.501 21.275 14.6885 21.5875 15.1885 21.4875C19.259 20.1133 21.9999 16.2963 22.001 12C22.001 6.475 17.526 2 12.001 2Z',
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/claudiovestini',
+    d: 'M6.94048 4.99993C6.94011 5.81424 6.44608 6.54702 5.69134 6.85273C4.9366 7.15845 4.07187 6.97605 3.5049 6.39155C2.93793 5.80704 2.78195 4.93715 3.1105 4.19207C3.43906 3.44699 4.18654 2.9755 5.00048 2.99993C6.08155 3.03238 6.94097 3.91837 6.94048 4.99993ZM7.00048 8.47993H3.00048V20.9999H7.00048V8.47993ZM13.3205 8.47993H9.34048V20.9999H13.2805V14.4299C13.2805 10.7699 18.0505 10.4299 18.0505 14.4299V20.9999H22.0005V13.0699C22.0005 6.89993 14.9405 7.12993 13.2805 10.1599L13.3205 8.47993Z',
+  },
+  {
+    label: 'Google Scholar',
+    href: 'https://scholar.google.com/citations?user=PPiQ6ycAAAAJ',
+    d: 'M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z',
+  },
+  {
+    label: 'ORCID',
+    href: 'https://orcid.org/0009-0005-6154-0574',
+    d: 'M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z',
+  },
+];
+---
+
+<header class="site-header" transition:name="header" transition:animate="none">
+  <a class="site-mark" href="/" aria-label="Claudio Vestini, about">
+    <Signature aria-hidden="true" focusable="false" />
+  </a>
+  <nav class="site-nav" aria-label="Site">
+    <ul class="nav-list">
+      {
+        icons.map(({ label, href, d }) => (
+          <li class="nav-icon">
+            <a href={href} rel="me" title={label} aria-label={label}>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d={d} fill="currentColor" />
+              </svg>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="nav-list">
+      {
+        groups.map((group, i) => (
+          <>
+            {i > 0 && <li class="nav-rule" aria-hidden="true" />}
+            {group.map(({ label, href }) => (
+              <li>
+                <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
+                  {label}
+                </a>
+              </li>
+            ))}
+          </>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
