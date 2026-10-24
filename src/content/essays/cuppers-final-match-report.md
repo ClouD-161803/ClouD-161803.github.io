@@ -1,5 +1,5 @@
 ---
-title: "Cuppers Final Match Report"
+title: "Cuppers Final: Match Report"
 date: 2024-02-25
 note: "Written following Keble College's (triple) win of the Cuppers (inter-collegiate) tournament at the University of Oxford"
 ---
