@@ -7,7 +7,7 @@ import '@fontsource-variable/eb-garamond/wght.css';
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
-import Plum from '../components/Plum.astro';
+import Orbits from '../components/Orbits.astro';
 
 interface Props {
   title?: string;
@@ -49,7 +49,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <ClientRouter />
   </head>
   <body>
-    <Plum />
+    <Orbits />
     <a href="#main" class="skip">skip to content</a>
     <div class="site">
       <Header />

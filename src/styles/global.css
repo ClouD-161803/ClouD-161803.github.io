@@ -282,7 +282,7 @@ h4 {
   animation-duration: 0.2s;
 }
 
-/* the plum canvas behind the page, faded out towards the centre so that the text stays clear. it is
+/* the orbit canvas behind the page, faded out towards the centre so that the text stays clear. it is
    as tall as the large viewport, which stays put while the browser of a phone hides or shows its
    toolbar, with the plain viewport height as the fallback of older browsers */
 .plum {

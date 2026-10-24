@@ -1,0 +1,16 @@
+---
+// a canvas behind the page on which orbits of the circular restricted three-body problem are traced, by
+// traceOrbits in src/lib/orbits.ts. it persists across client-side navigation, hence the drawing is
+// made once per visit, and it is left blank when the visitor prefers reduced motion
+---
+
+<canvas class="plum" aria-hidden="true" transition:persist></canvas>
+
+<script>
+  import { traceOrbits } from '../lib/orbits';
+
+  const canvas = document.querySelector<HTMLCanvasElement>('canvas.plum');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (canvas && !reduced.matches) traceOrbits(canvas);
+</script>
