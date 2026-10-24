@@ -2,7 +2,7 @@
 title: "The Great Russian Novel"
 date: 2026-05-13
 note: "Written for SLA 220, Russian literature, at Princeton, in spring 2026."
-draft: false
+draft: true
 order: 1
 ---
 

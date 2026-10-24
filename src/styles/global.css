@@ -324,14 +324,6 @@ h4 {
   height: 100%;
 }
 
-/* the viewBox is about 1300 units tall, hence 16 units are a little under a pixel at 4rem, which keeps the thin strokes */
-.site-mark path {
-  stroke: currentColor;
-  stroke-width: 16;
-  stroke-linejoin: round;
-}
-
-
 .site-mark:hover {
   opacity: 0.7;
 }
