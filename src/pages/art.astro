@@ -26,7 +26,8 @@ const heading = (post: Post) =>
   <ul class="covers">
     {
       posts.map((post, i) => (
-        <li class="slide-enter" style={`--enter-stage:${Math.min(i, 12)}`}>
+        // Safari on an iPhone crashed with every cover animating, hence only the first twelve animate
+        <li class:list={{ 'slide-enter': i < 12 }} style={i < 12 ? `--enter-stage:${i}` : undefined}>
           <a href={`/art/${post.key}/`}>
             <Image
               class="frame cover"
