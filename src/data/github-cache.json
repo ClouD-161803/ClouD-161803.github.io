@@ -41,7 +41,7 @@
   "beeson-group/tycho": {
     "full_name": "beeson-group/tycho",
     "html_url": "https://github.com/beeson-group/tycho",
-    "description": null,
+    "description": "An open-source toolkit for effortless, interactive astrodynamics HTML visualizations",
     "language": "TypeScript",
     "stargazers_count": 0,
     "pushed_at": "2026-11-07T03:24:37Z",
@@ -49,7 +49,7 @@
     "size": 821,
     "topics": [],
     "archived": false,
-    "fetched_at": "2026-11-07T04:17:04.997Z"
+    "fetched_at": "2026-11-07T04:24:39.959Z"
   },
   "beeson-group/pydylan": {
     "full_name": "beeson-group/pydylan",
@@ -67,14 +67,14 @@
   "beeson-group/slides": {
     "full_name": "beeson-group/slides",
     "html_url": "https://github.com/beeson-group/slides",
-    "description": null,
+    "description": "Template for Beeson group HTML presentations, built on reveal.js",
     "language": "JavaScript",
     "stargazers_count": 0,
     "pushed_at": "2026-11-07T03:55:47Z",
-    "homepage": null,
+    "homepage": "https://beeson-group.github.io/slides/",
     "size": 2553,
     "topics": [],
     "archived": false,
-    "fetched_at": "2026-11-07T04:17:05.147Z"
+    "fetched_at": "2026-11-07T04:24:40.145Z"
   }
 }
