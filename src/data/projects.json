@@ -3,5 +3,6 @@
   { "owner": "ClouD-161803", "name": "solar-system-matlab", "description": null },
   { "owner": "ClouD-161803", "name": "operation-midnight-hammer-stk", "description": null },
   { "owner": "beeson-group", "name": "tycho", "description": null },
+  { "owner": "beeson-group", "name": "slides", "description": "An HTML slide template for the talks of the Beeson group, built on reveal.js, with orbits of the circular restricted three-body problem drawn behind the slides." },
   { "owner": "beeson-group", "name": "pydylan", "description": null }
 ]

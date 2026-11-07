@@ -5,12 +5,12 @@
     "description": "Project investigating Dykstra's algorithm for Hilbert space projection onto convex sets' intersection",
     "language": "Python",
     "stargazers_count": 1,
-    "pushed_at": "2026-10-20T22:47:38Z",
+    "pushed_at": "2026-10-27T19:37:28Z",
     "homepage": "",
-    "size": 39597,
+    "size": 40090,
     "topics": [],
     "archived": false,
-    "fetched_at": "2026-10-22T07:31:41.626Z"
+    "fetched_at": "2026-11-07T04:17:04.496Z"
   },
   "ClouD-161803/solar-system-matlab": {
     "full_name": "ClouD-161803/solar-system-matlab",
@@ -31,25 +31,25 @@
     "description": "STK Model of the US DOD Midnight Hammer Operation",
     "language": "Shell",
     "stargazers_count": 0,
-    "pushed_at": "2025-12-13T17:05:35Z",
+    "pushed_at": "2026-10-24T19:35:56Z",
     "homepage": null,
-    "size": 113626,
+    "size": 113635,
     "topics": [],
     "archived": false,
-    "fetched_at": "2026-10-22T07:31:41.654Z"
+    "fetched_at": "2026-11-07T04:17:04.852Z"
   },
   "beeson-group/tycho": {
     "full_name": "beeson-group/tycho",
     "html_url": "https://github.com/beeson-group/tycho",
     "description": null,
-    "language": null,
+    "language": "TypeScript",
     "stargazers_count": 0,
-    "pushed_at": "2026-09-30T00:16:38Z",
+    "pushed_at": "2026-11-07T03:24:37Z",
     "homepage": null,
-    "size": 0,
+    "size": 821,
     "topics": [],
     "archived": false,
-    "fetched_at": "2026-10-22T07:31:41.668Z"
+    "fetched_at": "2026-11-07T04:17:04.997Z"
   },
   "beeson-group/pydylan": {
     "full_name": "beeson-group/pydylan",
@@ -63,5 +63,18 @@
     "topics": [],
     "archived": false,
     "fetched_at": "2026-10-22T07:31:41.681Z"
+  },
+  "beeson-group/slides": {
+    "full_name": "beeson-group/slides",
+    "html_url": "https://github.com/beeson-group/slides",
+    "description": null,
+    "language": "JavaScript",
+    "stargazers_count": 0,
+    "pushed_at": "2026-11-07T03:55:47Z",
+    "homepage": null,
+    "size": 2553,
+    "topics": [],
+    "archived": false,
+    "fetched_at": "2026-11-07T04:17:05.147Z"
   }
 }
