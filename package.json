@@ -7,12 +7,13 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/fetch-github.mjs",
+    "prebuild": "node scripts/fetch-github.mjs && node scripts/fetch-talks.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "import:photography": "node scripts/import-photography.mjs",
     "import:art": "node scripts/import-art.mjs",
-    "fetch:github": "node scripts/fetch-github.mjs"
+    "fetch:github": "node scripts/fetch-github.mjs",
+    "fetch:talks": "node scripts/fetch-talks.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.1.1",

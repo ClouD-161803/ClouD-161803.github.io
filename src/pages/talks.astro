@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionNav from '../components/SectionNav.astro';
+import talks from '../data/talks.json';
+
+interface Talk {
+  repo: string;
+  url: string;
+  title: string;
+  date: string;
+  venue: string | null;
+}
+
+// the list is written newest first by scripts/fetch-talks.mjs, and the page reads only that file
+const list = talks as Talk[];
+const years = new Map<number, Talk[]>();
+for (const talk of list) {
+  const year = Number(talk.date.slice(0, 4));
+  years.set(year, [...(years.get(year) ?? []), talk]);
+}
+const rank = new Map(list.map((talk, i) => [talk.repo, Math.min(i, 12)]));
+const dayMonth = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+---
+
+<Base title="Talks" description="Talks by Claudio Vestini, with their slides.">
+  <SectionNav current="/talks/" />
+  <ul class="posts">
+    {
+      [...years.entries()].map(([year, items]) => (
+        <li class="posts-year">
+          <span class="year-mark" aria-hidden="true">{year}</span>
+          <ul class="posts-list" aria-label={String(year)}>
+            {items.map((talk) => (
+              <li class="slide-enter" style={`--enter-stage:${rank.get(talk.repo)}`}>
+                <a href={talk.url}>
+                  <span class="posts-title">{talk.title}</span>
+                  <span class="posts-meta">
+                    <time datetime={talk.date}>{dayMonth(talk.date)}</time>
+                    {talk.venue && ` · ${talk.venue}`}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

@@ -7,7 +7,7 @@ import Signature from '../assets/signature.svg';
 // the icon links stand in a row above the page links, which form one row with a hairline between
 // the writing group and the arts group. the about page is reached through the mark at the top left
 // and has no link here
-const groups = [['/publications/', '/projects/', '/essays/'], ['/photography/', '/art/', '/music/']].map(
+const groups = [['/publications/', '/projects/', '/essays/', '/talks/'], ['/photography/', '/art/', '/music/']].map(
   (hrefs) => hrefs.map((href) => nav.find((item) => item.href === href)!),
 );
 

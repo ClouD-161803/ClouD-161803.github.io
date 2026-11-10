@@ -4,6 +4,9 @@ on:
   push:
     branches: [master]
   workflow_dispatch:
+  # a daily build lists a talk published since the last push, see scripts/fetch-talks.mjs
+  schedule:
+    - cron: '17 6 * * *'
 
 permissions:
   contents: read

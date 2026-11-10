@@ -22,15 +22,15 @@ npm run build
 node --test
 ```
 
-These install the dependencies from `package-lock.json`, start the dev server, write the static site into `dist/`, and run the tests of the caption parser, of the Instagram export import, and of the background drawing, respectively. The `prebuild` script runs `scripts/fetch-github.mjs` before every build, and `npm run preview` serves `dist/` locally.
+These install the dependencies from `package-lock.json`, start the dev server, write the static site into `dist/`, and run the tests of the caption parser, of the Instagram export import, of the talk head parser, and of the background drawing, respectively. The `prebuild` script runs `scripts/fetch-github.mjs` and `scripts/fetch-talks.mjs` before every build, and `npm run preview` serves `dist/` locally.
 
 ## Layout of the repository
 
-- `src/pages/` holds one file per route: the about page, the publications, projects, essays, photography, art, and music pages, and the not-found page.
+- `src/pages/` holds one file per route: the about page, the publications, projects, essays, talks, photography, art, and music pages, and the not-found page.
 - `src/layouts/Base.astro` is the single layout, with the fonts, the page metadata, the header, and the background canvas.
 - `src/components/` holds the header, the row of section names, the prose wrapper, the gallery and lightbox of the photography and art pages, and the background canvas.
 - `src/content/` holds the essays and `about.md`, the text of the about page.
-- `src/data/` holds the JSON data of every list, the GitHub cache, the museum and flag lookups, and the navigation in `nav.ts`.
+- `src/data/` holds the JSON data of every list, the GitHub cache, the list of talks, the museum and flag lookups, and the navigation in `nav.ts`.
 - `src/lib/` holds the date formatting, the sorted list of essays, and the background drawing with its test.
 - `src/assets/` holds the portrait, the monogram, the Beeson Group logo, and the optimized photographs written by the import scripts.
 - `src/styles/global.css` is the single stylesheet, with the design tokens at its top.
@@ -63,6 +63,21 @@ A project is an object in `src/data/projects.json` with `owner`, `name`, and `de
 
 ```bash
 npm run fetch:github
+```
+
+### A talk
+
+A talk is a public repository of ClouD-161803 with the topic `talk` and a GitHub Pages site, e.g. a deck made from the Beeson group template `beeson-group/slides`. Its site is served at `https://claudiovestini.com/<repository>/`, since a project site of the account inherits the custom domain. Before every build `scripts/fetch-talks.mjs` finds these repositories through the GitHub search API, reads the head of the `index.html` of each deck, and writes the list into `src/data/talks.json`, which is committed. The title of a talk is the `<title>` of its deck, and its date and venue are given by two meta tags in the same head.
+
+```html
+<meta name="talk-date" content="2026-11-09">
+<meta name="talk-venue" content="Beeson group meeting">
+```
+
+A deck without `talk-date` is dated by the day its repository was made. The link of a talk is the homepage of its repository, or its `github.io` address when the homepage is empty. The workflow runs daily as well, hence a talk published without a push here is listed within a day, and a manual dispatch lists it at once. A failed request keeps the committed list, hence a build without network still passes.
+
+```bash
+npm run fetch:talks
 ```
 
 ### A photography project

@@ -9,6 +9,7 @@ export const nav: NavItem[] = [
   { label: 'publications', href: '/publications/' },
   { label: 'projects', href: '/projects/' },
   { label: 'essays', href: '/essays/' },
+  { label: 'talks', href: '/talks/' },
   { label: 'photography', href: '/photography/' },
   { label: 'art', href: '/art/' },
   { label: 'music', href: '/music/' },
